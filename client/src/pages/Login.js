@@ -84,13 +84,21 @@ export default function Login() {
           flexDirection: "row",
         }}
       >
-        <AccountCircleTwoTone fontSize="medium" />
         <TextField
           required
           label="Username"
           value={values.username}
           onChange={handleChange("username")}
           variant="outlined"
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton aria-label="username icon" edge="end">
+                  <AccountCircleTwoTone fontSize="medium" />
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
         />
       </Stack>
 
@@ -104,7 +112,6 @@ export default function Login() {
           flexDirection: "row",
         }}
       >
-        <PasswordTwoTone fontSize="medium" />
         <TextField
           required
           label="Password"

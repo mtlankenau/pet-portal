@@ -89,13 +89,22 @@ export default function Signup() {
           flexDirection: "row",
         }}
       >
-        <CreateTwoTone fontSize="medium" />
+        {/* <CreateTwoTone fontSize="medium" /> */}
         <TextField
           required
           label="First Name"
           value={values.firstName}
           onChange={handleChange("firstName")}
           variant="outlined"
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton aria-label="name icon" edge="end">
+                  <CreateTwoTone fontSize="medium" />
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
         />
       </Stack>
 
@@ -109,13 +118,22 @@ export default function Signup() {
           flexDirection: "row",
         }}
       >
-        <CreateTwoTone fontSize="medium" />
+        {/* <CreateTwoTone fontSize="medium" /> */}
         <TextField
           required
           label="Last Name"
           value={values.lastName}
           onChange={handleChange("lastName")}
           variant="outlined"
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton aria-label="name icon" edge="end">
+                  <CreateTwoTone fontSize="medium" />
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
         />
       </Stack>
 
@@ -129,13 +147,22 @@ export default function Signup() {
           flexDirection: "row",
         }}
       >
-        <EmailTwoTone fontSize="medium" />
+        {/* <EmailTwoTone fontSize="medium" /> */}
         <TextField
           required
           label="Email"
           value={values.email}
           onChange={handleChange("email")}
           variant="outlined"
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton aria-label="email icon" edge="end">
+                  <EmailTwoTone fontSize="medium" />
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
         />
       </Stack>
 
@@ -149,13 +176,22 @@ export default function Signup() {
           flexDirection: "row",
         }}
       >
-        <PhoneTwoTone fontSize="medium" />
+        {/* <PhoneTwoTone fontSize="medium" /> */}
         <TextField
           required
           label="Phone Number"
           value={values.phoneNumber}
           onChange={handleChange("phoneNumber")}
           variant="outlined"
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton aria-label="phone icon" edge="end">
+                  <PhoneTwoTone fontSize="medium" />
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
         />
       </Stack>
 
@@ -169,13 +205,22 @@ export default function Signup() {
           flexDirection: "row",
         }}
       >
-        <AccountCircleTwoTone fontSize="medium" />
+        {/* <AccountCircleTwoTone fontSize="medium" /> */}
         <TextField
           required
           label="Username"
           value={values.username}
           onChange={handleChange("username")}
           variant="outlined"
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton aria-label="username icon" edge="end">
+                  <AccountCircleTwoTone fontSize="medium" />
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
         />
       </Stack>
 
@@ -189,7 +234,6 @@ export default function Signup() {
           flexDirection: "row",
         }}
       >
-        <PasswordTwoTone fontSize="medium" />
         <TextField
           required
           label="Password"
