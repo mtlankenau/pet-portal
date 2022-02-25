@@ -20,8 +20,12 @@ import {
   Visibility,
   VisibilityOff,
 } from "@mui/icons-material";
+import Auth from "../utils/auth";
+import { useMutation } from "@apollo/client";
+import { LOGIN_USER } from "../utils/queries";
 
 export default function Login() {
+  // sets initial values for email, username, & password inputs, & password status
   const [values, setValues] = React.useState({
     email: "",
     username: "",
@@ -29,11 +33,16 @@ export default function Login() {
     showPassword: false,
   });
 
+  // useMutation hook - creates mutate function (login) and object representing current status of mutation execution
+  const [login, { loading, error }] = useMutation(LOGIN_USER);
+
+  // on change, const values is updated to TextField's current value
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
     // console.log(values);
   };
 
+  // Once Visibility icon is clicked, setter updates showPassword property to opposite boolean
   const handleClickShowPassword = () => {
     setValues({
       ...values,
@@ -45,9 +54,22 @@ export default function Login() {
     event.preventDefault();
   };
 
+  // Once Submit button is clicked, ...........
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(values);
+    if (loading) return `Submitting...`;
+    if (error) return `Submission failed: ${error.message}`;
+
+    try {
+      // runs mutation function, setting values from TextFields as variables to data object
+      const { data } = await login({
+        variables: { ...values },
+      });
+      // sets token for user in local storage
+      Auth.login(data.login.token);
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   return (
