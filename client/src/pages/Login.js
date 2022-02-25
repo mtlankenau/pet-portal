@@ -146,7 +146,12 @@ export default function Login() {
           flexDirection: "row",
         }}
       >
-        <Button size="large" variant="contained" onClick={handleSubmit}>
+        <Button
+          color="secondary"
+          size="large"
+          variant="contained"
+          onClick={handleSubmit}
+        >
           Submit
         </Button>
       </Stack>

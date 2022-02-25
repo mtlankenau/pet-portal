@@ -18,6 +18,28 @@ import Profile from "./pages/Profile";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
+// MUI Color Theme
+import { ThemeProvider, createTheme } from "@mui/material";
+
+const theme = createTheme({
+  palette: {
+    // type: "dark",
+    primary: {
+      main: "#3f8db5",
+    },
+    secondary: {
+      main: "#733fb9",
+    },
+    typography: {
+      fontFamily: "Quicksand",
+      fontWeightLight: 400,
+      fontWeightRegular: 500,
+      fontWeightMedium: 600,
+      fontWeightBold: 700,
+    },
+  },
+});
+
 // apollo client http header/token logic
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -41,17 +63,19 @@ const client = new ApolloClient({
 // app component
 export default function App() {
   return (
-    <ApolloProvider client={client}>
-      <Router>
-        <Navbar />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/signup" component={Signup} />
-          <Route exact path="/profile" component={Profile} />
-        </Switch>
-        <Footer />
-      </Router>
-    </ApolloProvider>
+    <ThemeProvider theme={theme}>
+      <ApolloProvider client={client}>
+        <Router>
+          <Navbar />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/signup" component={Signup} />
+            <Route exact path="/profile" component={Profile} />
+          </Switch>
+          <Footer />
+        </Router>
+      </ApolloProvider>
+    </ThemeProvider>
   );
 }

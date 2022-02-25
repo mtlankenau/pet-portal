@@ -268,7 +268,12 @@ export default function Signup() {
           flexDirection: "row",
         }}
       >
-        <Button size="large" variant="contained" onClick={handleSubmit}>
+        <Button
+          color="primary"
+          size="large"
+          variant="contained"
+          onClick={handleSubmit}
+        >
           Submit
         </Button>
       </Stack>
