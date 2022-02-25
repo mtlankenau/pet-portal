@@ -22,7 +22,7 @@ import {
 } from "@mui/icons-material";
 import Auth from "../utils/auth";
 import { useMutation } from "@apollo/client";
-import { LOGIN_USER } from "../utils/queries";
+import { LOGIN_USER } from "../utils/mutations";
 
 export default function Login() {
   // sets initial values for email, username, & password inputs, & password status
@@ -74,26 +74,6 @@ export default function Login() {
 
   return (
     <>
-      <Stack
-        direction="row"
-        spacing={2}
-        m={2}
-        sx={{
-          justifyContent: "center",
-          alignItems: "center",
-          flexDirection: "row",
-        }}
-      >
-        <EmailTwoTone fontSize="medium" />
-        <TextField
-          required
-          label="Email"
-          value={values.email}
-          onChange={handleChange("email")}
-          variant="outlined"
-        />
-      </Stack>
-
       <Stack
         direction="row"
         spacing={2}
