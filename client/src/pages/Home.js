@@ -5,7 +5,7 @@ import Auth from "../utils/auth";
 export default function Home() {
   return (
     // <div>Home</div>
-    <Box>
+    <Box sx={{ flexGrow: 1 }} textAlign="center" m={2}>
       {Auth.loggedIn() ? (
         <Typography variant="h2" gutterBottom component="div">
           Welcome back {Auth.getProfile().data.username}!
