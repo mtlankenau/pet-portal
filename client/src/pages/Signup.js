@@ -1,22 +1,16 @@
 import React from "react";
 import {
   Box,
-  Typography,
-  FormControl,
-  InputLabel,
-  Input,
-  FormHelperText,
   InputAdornment,
   TextField,
-  Grid,
   Stack,
   IconButton,
   Button,
+  Typography,
 } from "@mui/material";
 import {
   AccountCircleTwoTone,
   EmailTwoTone,
-  PasswordTwoTone,
   CreateTwoTone,
   PhoneTwoTone,
   Visibility,
@@ -77,169 +71,82 @@ export default function Signup() {
     }
   };
 
+  const formData = [
+    {
+      value: "First Name",
+      useStateKey: "firstName",
+      useStateValue: values.firstName,
+      icon: <CreateTwoTone fontSize="medium" />,
+    },
+    {
+      value: "Last Name",
+      useStateKey: "lastName",
+      useStateValue: values.lastName,
+      icon: <CreateTwoTone fontSize="medium" />,
+    },
+    {
+      value: "Email",
+      useStateKey: "email",
+      useStateValue: values.email,
+      icon: <EmailTwoTone fontSize="medium" />,
+    },
+    {
+      value: "Phone Number",
+      useStateKey: "phoneNumber",
+      useStateValue: values.phoneNumber,
+      icon: <PhoneTwoTone fontSize="medium" />,
+    },
+    {
+      value: "Username",
+      useStateKey: "username",
+      useStateValue: values.username,
+      icon: <AccountCircleTwoTone fontSize="medium" />,
+    },
+  ];
+
   return (
-    <>
-      <Stack
-        direction="row"
-        spacing={2}
-        m={2}
-        sx={{
-          justifyContent: "center",
-          alignItems: "center",
-          flexDirection: "row",
-        }}
-      >
-        {/* <CreateTwoTone fontSize="medium" /> */}
-        <TextField
-          required
-          label="First Name"
-          value={values.firstName}
-          onChange={handleChange("firstName")}
-          variant="outlined"
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <IconButton aria-label="name icon" edge="end">
-                  <CreateTwoTone fontSize="medium" />
-                </IconButton>
-              </InputAdornment>
-            ),
-          }}
-        />
+    <Box sx={{ mx: "auto", width: "50%" }}>
+      <Stack spacing={2} m={2}>
+        <Typography
+          variant="h4"
+          gutterBottom
+          component="div"
+          textAlign="center"
+        >
+          Signup
+        </Typography>
       </Stack>
+      {formData.map((item) => (
+        <Stack key={item.value} spacing={2} m={2}>
+          <TextField
+            key={item.value}
+            required
+            label={item.value}
+            value={item.useStateValue}
+            onChange={handleChange(item.useStateKey)}
+            variant="outlined"
+            fullWidth
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton aria-label="name icon" edge="end">
+                    {item.icon}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
+          />
+        </Stack>
+      ))}
 
-      <Stack
-        direction="row"
-        spacing={2}
-        m={2}
-        sx={{
-          justifyContent: "center",
-          alignItems: "center",
-          flexDirection: "row",
-        }}
-      >
-        {/* <CreateTwoTone fontSize="medium" /> */}
-        <TextField
-          required
-          label="Last Name"
-          value={values.lastName}
-          onChange={handleChange("lastName")}
-          variant="outlined"
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <IconButton aria-label="name icon" edge="end">
-                  <CreateTwoTone fontSize="medium" />
-                </IconButton>
-              </InputAdornment>
-            ),
-          }}
-        />
-      </Stack>
-
-      <Stack
-        direction="row"
-        spacing={2}
-        m={2}
-        sx={{
-          justifyContent: "center",
-          alignItems: "center",
-          flexDirection: "row",
-        }}
-      >
-        {/* <EmailTwoTone fontSize="medium" /> */}
-        <TextField
-          required
-          label="Email"
-          value={values.email}
-          onChange={handleChange("email")}
-          variant="outlined"
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <IconButton aria-label="email icon" edge="end">
-                  <EmailTwoTone fontSize="medium" />
-                </IconButton>
-              </InputAdornment>
-            ),
-          }}
-        />
-      </Stack>
-
-      <Stack
-        direction="row"
-        spacing={2}
-        m={2}
-        sx={{
-          justifyContent: "center",
-          alignItems: "center",
-          flexDirection: "row",
-        }}
-      >
-        {/* <PhoneTwoTone fontSize="medium" /> */}
-        <TextField
-          required
-          label="Phone Number"
-          value={values.phoneNumber}
-          onChange={handleChange("phoneNumber")}
-          variant="outlined"
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <IconButton aria-label="phone icon" edge="end">
-                  <PhoneTwoTone fontSize="medium" />
-                </IconButton>
-              </InputAdornment>
-            ),
-          }}
-        />
-      </Stack>
-
-      <Stack
-        direction="row"
-        spacing={2}
-        m={2}
-        sx={{
-          justifyContent: "center",
-          alignItems: "center",
-          flexDirection: "row",
-        }}
-      >
-        {/* <AccountCircleTwoTone fontSize="medium" /> */}
-        <TextField
-          required
-          label="Username"
-          value={values.username}
-          onChange={handleChange("username")}
-          variant="outlined"
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <IconButton aria-label="username icon" edge="end">
-                  <AccountCircleTwoTone fontSize="medium" />
-                </IconButton>
-              </InputAdornment>
-            ),
-          }}
-        />
-      </Stack>
-
-      <Stack
-        direction="row"
-        spacing={2}
-        m={2}
-        sx={{
-          justifyContent: "center",
-          alignItems: "center",
-          flexDirection: "row",
-        }}
-      >
+      <Stack spacing={2} m={2}>
         <TextField
           required
           label="Password"
           type={values.showPassword ? "text" : "password"}
           value={values.password}
           onChange={handleChange("password")}
+          fullWidth
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
@@ -258,18 +165,9 @@ export default function Signup() {
         />
       </Stack>
 
-      <Stack
-        direction="row"
-        spacing={2}
-        m={2}
-        sx={{
-          justifyContent: "center",
-          alignItems: "center",
-          flexDirection: "row",
-        }}
-      >
+      <Stack spacing={2} m={2}>
         <Button
-          color="primary"
+          color="secondary"
           size="large"
           variant="contained"
           onClick={handleSubmit}
@@ -277,6 +175,6 @@ export default function Signup() {
           Submit
         </Button>
       </Stack>
-    </>
+    </Box>
   );
 }

@@ -73,23 +73,26 @@ export default function Login() {
   };
 
   return (
-    <>
-      <Stack
-        direction="row"
-        spacing={2}
-        m={2}
-        sx={{
-          justifyContent: "center",
-          alignItems: "center",
-          flexDirection: "row",
-        }}
-      >
+    <Box sx={{ mx: "auto", width: "50%" }}>
+      <Stack spacing={2} m={2}>
+        <Typography
+          variant="h4"
+          gutterBottom
+          component="div"
+          textAlign="center"
+        >
+          Login
+        </Typography>
+      </Stack>
+
+      <Stack spacing={2} m={2}>
         <TextField
           required
           label="Username"
           value={values.username}
           onChange={handleChange("username")}
           variant="outlined"
+          fullWidth="true"
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
@@ -102,22 +105,14 @@ export default function Login() {
         />
       </Stack>
 
-      <Stack
-        direction="row"
-        spacing={2}
-        m={2}
-        sx={{
-          justifyContent: "center",
-          alignItems: "center",
-          flexDirection: "row",
-        }}
-      >
+      <Stack spacing={2} m={2}>
         <TextField
           required
           label="Password"
           type={values.showPassword ? "text" : "password"}
           value={values.password}
           onChange={handleChange("password")}
+          fullWidth="true"
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
@@ -136,16 +131,7 @@ export default function Login() {
         />
       </Stack>
 
-      <Stack
-        direction="row"
-        spacing={2}
-        m={2}
-        sx={{
-          justifyContent: "center",
-          alignItems: "center",
-          flexDirection: "row",
-        }}
-      >
+      <Stack spacing={2} m={2}>
         <Button
           color="secondary"
           size="large"
@@ -229,6 +215,6 @@ export default function Login() {
           variant="outlined"
         />
       </Box> */}
-    </>
+    </Box>
   );
 }
